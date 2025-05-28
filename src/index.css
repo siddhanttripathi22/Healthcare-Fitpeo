@@ -1,0 +1,203 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Define your primary CSS variables here.
+   The :root variables will be available globally.
+   The .dark variables are for dark mode if you implement a toggle.
+*/
+:root {
+  --background: 0 0% 100%; /* Light mode background - white */
+  --foreground: 222.2 84% 4.9%; /* Light mode text - dark gray/blue */
+  --card: 0 0% 100%;
+  --card-foreground: 222.2 84% 4.9%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 222.2 84% 4.9%;
+
+  --primary: 222.2 47.4% 11.2%; /* Example: A dark blue for primary elements */
+  --primary-foreground: 210 40% 98%; /* Text on primary elements - light gray/white */
+
+  --secondary: 210 40% 96%; /* Light gray for secondary backgrounds */
+  --secondary-foreground: 222.2 47.4% 11.2%; /* Text on secondary - dark blue */
+    --muted: 210 40% 96%;
+  --muted-foreground: 215.4 16.3% 46.9%; /* Muted text - grayish */
+
+    --accent: 210 40% 96%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+  --destructive: 0 84.2% 60.2%; /* Red for destructive actions */
+    --destructive-foreground: 210 40% 98%;
+
+  --border: 214.3 31.8% 91.4%; /* Light gray border */
+  --input: 214.3 31.8% 91.4%; /* Input field background */
+  --ring: 222.2 84% 4.9%; /* Focus ring color */
+
+  --radius: 0.5rem; /* Default border radius */
+
+  /* Custom colors from your original design image */
+  --healthcare-bg-page: #F0F4F8; /* Overall page background */
+  --healthcare-sidebar-bg: #FFFFFF;
+  --healthcare-header-bg: #FFFFFF;
+  --healthcare-text-primary: #334155; /* Darker text */
+  --healthcare-text-secondary: #64748b; /* Lighter text */
+  --healthcare-accent-blue: #2D8CFF; /* Accent blue from logo/buttons */
+  --healthcare-active-blue: #3B82F6; /* Active sidebar item */
+}
+
+/* Example for dark mode if you add a .dark class to your html or body tag */
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+  /* ... define all other variables for dark mode ... */
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+  --healthcare-bg-page: #1A202C; /* Dark page background */
+  --healthcare-sidebar-bg: #2D3748;
+  --healthcare-header-bg: #2D3748;
+  --healthcare-text-primary: #E2E8F0;
+  --healthcare-text-secondary: #A0AEC0;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--healthcare-bg-page); /* Use your variable */
+  color: var(--healthcare-text-primary); /* Use your variable */
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* Custom scrollbar (optional, from previous implementation) */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--healthcare-bg-page);
+}
+::-webkit-scrollbar-thumb {
+  background: #c0c8d0;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #a0a8b0;
+}
+/* Custom styles for healthcare dashboard */
+.progress-bar {
+  background: var(--progress-background, #06b6d4);
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .grid-cols-3 {
+    @apply grid-cols-1;
+  }
+}
+
+@media (max-width: 768px) {
+  .w-64 {
+    @apply w-16;
+  }
+
+  .sidebar-text {
+    @apply hidden;
+  }
+}
+
+/* react-calendar custom styles */
+.react-calendar-custom {
+  width: 100%;
+  border: none !important; /* Remove default border */
+  font-family: inherit; /* Use app's font */
+}
+
+.react-calendar-custom .react-calendar__navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding: 0 0.5rem;
+}
+
+.react-calendar-custom .react-calendar__navigation button {
+  color: #374151; /* text-gray-700 */
+  min-width: 30px;
+  padding: 8px;
+  border-radius: 0.375rem; /* rounded-md */
+  background: none;
+}
+.react-calendar-custom .react-calendar__navigation button:hover {
+  background-color: #f3f4f6; /* bg-gray-100 */
+}
+.react-calendar-custom .react-calendar__navigation__label {
+  font-weight: 600; /* font-semibold */
+  font-size: 1.125rem; /* text-lg */
+  color: #374151; /* text-gray-700 */
+}
+
+.react-calendar-custom .react-calendar__month-view__weekdays {
+  text-align: center;
+  font-size: 0.75rem; /* text-xs */
+  color: #6b7280; /* text-gray-500 */
+  margin-bottom: 0.5rem;
+  font-weight: 500; /* font-medium */
+}
+.react-calendar-custom .react-calendar__month-view__weekdays__weekday {
+  padding: 0.5em;
+  text-decoration: none; /* Remove underline from abbr */
+}
+.react-calendar-custom .react-calendar__month-view__weekdays__weekday abbr[title] {
+  text-decoration: none !important;
+}
+
+
+.react-calendar-custom .react-calendar__month-view__days__day {
+  border-radius: 0.5rem; /* rounded-lg */
+  border: 1px solid transparent; /* For consistent spacing */
+  /* Tailwind classes applied via tileClassName will override some of these */
+}
+
+.react-calendar-custom .react-calendar__tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; /* Align content to top */
+  padding: 0.25rem; /* Adjust padding inside tile */
+  height: 6rem; /* Approx h-24 */
+  border-radius: 0.5rem; /* rounded-lg */
+  background-clip: padding-box; /* Important for rounded corners with borders */
+}
+
+.react-calendar-custom .react-calendar__tile:enabled:hover,
+.react-calendar-custom .react-calendar__tile:enabled:focus {
+  /* hover:bg-blue-50 is handled by tileClassName */
+}
+
+.react-calendar-custom .react-calendar__tile--now {
+  background: #eff6ff !important; /* bg-blue-50 for today, can be overridden */
+  /* color: #1d4ed8; */
+}
+
+.react-calendar-custom .react-calendar__tile--active {
+  /* Selected day style is handled by tileClassName using isSelected from data */
+  /* background: #2563eb !important; bg-blue-600 */
+  /* color: white !important; */
+}
+.react-calendar-custom .react-calendar__tile--neighboringMonth {
+  color: #9ca3af; /* text-gray-400 */
+  background-color: #f9fafb; /* bg-gray-50 */
+}
+
+/* Ensure Tailwind base styles don't interfere too much with calendar's abbr */
+.react-calendar__month-view__weekdays__weekday abbr {
+  border-bottom: none !important;
+  text-decoration: none !important;
+  cursor: default !important;
+}
